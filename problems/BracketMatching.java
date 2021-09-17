@@ -2,12 +2,14 @@ package problems;
 
 import java.util.HashMap;
 import java.util.LinkedList;
+import java.util.List;
+// import java.util.Stack;
 
 public class BracketMatching {
 
     public static void main(String[] args) {
         String expr = "{(((({{[][[abc][]]}}))))[]}[[{{{}}}]]";
-        boolean res = balancedBracketsExpressionA(expr);
+        boolean res = balancedBracketsExpression(expr);
         System.out.println(res);
     }
     /**
@@ -16,7 +18,7 @@ public class BracketMatching {
      * @param expression string expression
      * @return boolean indicator
      */
-    public static boolean balancedBracketsExpressionA(String expression) {
+    public static boolean balancedBracketsExpression(String expression) {
 
         HashMap<Character, Character> symbolsMap = new HashMap<>();
         symbolsMap.put(')', '(');
@@ -29,7 +31,7 @@ public class BracketMatching {
             if (current == '(' || current == '{' || current == '[') {
                 stack.addFirst(current);
             } else if (current == ')' || current == '}' || current == ']') {
-                if (!stack.isEmpty() && stack.getFirst() == symbolsMap.get(current)) {
+                if (!stack.isEmpty() && stack.peekFirst() == symbolsMap.get(current)) {
                     stack.removeFirst();
                 } else {
                     return false;
@@ -38,5 +40,13 @@ public class BracketMatching {
         }
 
         return stack.isEmpty() ? true : false;
+    }
+
+    /**
+     * Given n pairs of parentheses, write a function to generate all combinations of well-formed parentheses.
+     * @return
+     */
+    public static List<String> generateParenthesis() {
+        return null;
     }
 }
