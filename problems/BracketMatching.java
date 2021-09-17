@@ -12,6 +12,7 @@ public class BracketMatching {
     }
     /**
      * Checks if string expression has balanced brackets– (), {}, []
+     * Runs in O(n) time.
      * @param expression string expression
      * @return boolean indicator
      */
