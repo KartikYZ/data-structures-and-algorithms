@@ -1,4 +1,4 @@
-package dp;
+package dynamic_programming;
 
 public class Strings {
     
