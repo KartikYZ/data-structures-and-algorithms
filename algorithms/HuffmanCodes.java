@@ -3,7 +3,7 @@ package algorithms;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.TreeMap;
-import java.util.PriorityQueue;
+// import java.util.PriorityQueue;
 
 public class HuffmanCodes {
 

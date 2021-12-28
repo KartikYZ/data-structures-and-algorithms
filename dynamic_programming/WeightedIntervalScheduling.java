@@ -18,6 +18,7 @@ public class WeightedIntervalScheduling {
 
     public WeightedIntervalScheduling(int[][] S, boolean recursive) {
         this.S = S;
+        this.M = new int[S.length];
 
         // We sort S in non-decreasing order of finish times to leverage the resulting ordered structure.
         // This takes us O(n log n) time    
@@ -32,6 +33,8 @@ public class WeightedIntervalScheduling {
         } else {
             iterativeWIS();
         }
+
+        this.intervals = recoverIntervals();
     }
 
     private void recursiveWIS() {
@@ -42,7 +45,14 @@ public class WeightedIntervalScheduling {
 
     }
 
+    private List<Integer> recoverIntervals() {
+        // using our resulting mem-table we can determine which intervals belong in the optimal subset.
+        return null;
+    }
+
     public int getValue() {
+        // the value obtained by our optimal set of intervals is the entry
+        // to corresponding to taking all elements in consideration – the last entry of our memoization array.
         return this.M[this.M.length - 1];
     }
 

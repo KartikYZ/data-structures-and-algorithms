@@ -1,9 +1,6 @@
 package problems;
 
-import java.util.HashMap;
-import java.util.LinkedList;
-import java.util.List;
-// import java.util.Stack;
+import java.util.*;
 
 public class BracketMatching {
 
@@ -40,6 +37,59 @@ public class BracketMatching {
         }
 
         return stack.isEmpty() ? true : false;
+    }
+
+    public static String minRemoveToMakeValid(String s) {
+        if (s.length() == 0 || s == null) {
+            return "";
+        }
+        
+        Stack<Integer> opens = new Stack<>();
+        HashSet<Integer> includes = new HashSet<>();
+        StringBuilder sb = new StringBuilder();
+        
+        for (int i = 0; i < s.length(); i++) {
+            char c = s.charAt(i);
+            if (c == '(') {
+                opens.push(i);
+            } else if (c == ')' && !opens.isEmpty()) {
+                includes.add(i);
+                includes.add(opens.pop());
+            }
+        }
+        
+        for (int i = 0; i < s.length(); i++) {
+            char c = s.charAt(i);
+            if (c == '(' || c == ')') {
+                if (includes.contains(i)) {
+                    sb.append(c);
+                }
+            } else {
+                sb.append(c);
+            }
+        }
+        
+        return sb.toString();
+        
+    }
+
+    // input string only consists of brackets '(' and ')'
+    public int minAddToMakeValid(String s) {
+        Stack<Integer> stack = new Stack<>();
+        int count = 0;
+        for (char c: s.toCharArray()) {
+            if (c == '(') {
+                stack.push(1);
+            } else {
+                if (!stack.isEmpty()) {
+                    stack.pop();
+                } else {
+                    count++;
+                }
+            } 
+        }
+        
+        return count + stack.size();
     }
 
     /**
