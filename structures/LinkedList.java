@@ -16,8 +16,15 @@ public class LinkedList<T> {
     }
 
     public LinkedListNode<T> recursiveReverse(LinkedListNode<T> head) {
-        // TODO:
-        return null;
+        if (head == null || head.getNext() == null) {
+            return head;
+        }
+        
+        LinkedListNode<T> rev = this.recursiveReverse(head.getNext());
+        head.getNext().setNext(head);
+        head.setNext(null);
+        
+        return rev;
     }
 }
 
