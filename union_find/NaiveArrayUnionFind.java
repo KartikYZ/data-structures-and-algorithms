@@ -1,25 +1,26 @@
-package UnionFind;
+package union_find;
 
 import java.util.List;
 import java.util.Arrays;
 import java.util.HashMap;
 
 /**
- * An more efficient, optimized implementation of the union-find data structure. **TO_OPTIMIZE**
+ * An inefficient naive implementation of the union-find data structure.
  */
-public class ArrayUnionFind<T> {
+public class NaiveArrayUnionFind<T> {
 
     List<T> set;
     int[] uf;
     HashMap<T, Integer> map;
 
     // initialize all elements as singletons
-    public ArrayUnionFind(List<T> set) {
+    public NaiveArrayUnionFind(List<T> set) {
         this.set = set;
-        
+        this.map = new HashMap<>();
         this.uf = new int[set.size()];
         for (int i = 0; i < set.size(); i++) {
             uf[i] = i;
+            map.put(set.get(i), i);
         }
     }
 
